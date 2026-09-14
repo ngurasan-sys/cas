@@ -1,0 +1,12 @@
+warning: unused import: `crate::event_bus::MarketEvent`
+ --> src/market_data/mod.rs:1:5
+  |
+1 | use crate::event_bus::MarketEvent;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `backend` (lib) generated 1 warning (run `cargo fix --lib -p backend` to apply 1 suggestion)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/backend`
+Server running on http://0.0.0.0:3000

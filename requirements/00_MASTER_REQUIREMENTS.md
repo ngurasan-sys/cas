@@ -1,0 +1,45 @@
+# Master Requirements Checklist
+
+- [x] Create the complete directory structure.
+- [x] Create the Rust backend.
+- [x] Create the React frontend.
+- [x] Create configuration (`.env.example`).
+- [x] Create documentation (`README.md`, `architecture.md`).
+- [x] Implement synthetic data (generator pushing to event bus).
+- [ ] Implement Instrument Master functionality.
+- [ ] Implement Option engine.
+- [ ] Implement Futures engine.
+- [ ] Implement Order flow engine.
+- [ ] Implement Sector engine.
+- [ ] Implement Breadth engine.
+- [ ] Implement Volatility engine.
+- [ ] Implement Feature engine.
+- [ ] Implement Regime engine.
+- [ ] Implement Direction engine.
+- [ ] Implement Six strategies evaluate.
+- [ ] Implement Strategy router.
+- [ ] Implement Risk engine blocks strategy intents.
+- [ ] Implement Portfolio state.
+- [ ] Implement Paper execution.
+- [ ] Implement Reconciliation.
+- [ ] Implement Audit records.
+- [ ] Implement Broker abstractions.
+- [ ] Implement Dhan adapter structure.
+- [ ] Implement Upstox adapter structure.
+- [ ] Implement Broker authentication UI.
+- [ ] Implement WebSocket abstraction.
+- [ ] Implement Subscription manager.
+- [x] Implement Frontend terminal.
+- [x] Implement KLineChart.
+- [ ] Implement Option chain UI.
+- [ ] Implement Sector UI.
+- [ ] Implement Movers UI.
+- [ ] Implement Signal UI.
+- [ ] Implement Risk UI.
+- [ ] Implement Position UI.
+- [ ] Implement Orders UI.
+- [ ] Implement Data health.
+- [ ] Implement Replay.
+- [x] Documentation exists.
+- [ ] Security requirements documented.
+- [ ] Regulatory engineering requirements documented.
