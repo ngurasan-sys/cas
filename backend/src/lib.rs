@@ -1,7 +1,11 @@
 pub mod api;
 pub mod brokers;
+pub mod engines;
 pub mod event_bus;
+pub mod execution;
+pub mod foundation;
 pub mod instruments;
 pub mod market_data;
+pub mod portfolio;
 pub mod risk;
 pub mod strategies;

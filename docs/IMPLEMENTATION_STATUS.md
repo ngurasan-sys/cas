@@ -1,74 +1,72 @@
 # Implementation Status
 
-## Core Platform
-- **Backend Architecture (Rust/Tokio/Axum):** Implemented
-- **Frontend Architecture (React/Vite/Tailwind):** Implemented
-- **WebSocket Streaming:** Implemented
-- **Synthetic Data Generator:** Partially implemented (emits basic price ticks)
-- **Event Bus:** Partially implemented (broadcast channel)
-- **Instrument Master:** Stubbed
-- **Subscription Manager:** Missing
+## Phase 0 Baseline
+- **Rust Backend:** Compiles and runs. Basic architecture structure (routers, instruments, strategies, risk, engines, execution) is stubbed.
+- **React Frontend:** Builds cleanly. Basic terminal UI with KLineChart streaming simulated NIFTY/BANKNIFTY data over WebSockets is functional.
+- **Storage/DB:** Missing
+- **Configuration:** Present (`.env.example`)
+- **Tests:** Partial (1 dummy risk test passes)
 
-## Market Intelligence Engines
-- **Price Engine:** Missing
-- **Option Engine:** Missing
-- **Futures Engine:** Missing
-- **Order Flow Engine:** Missing
-- **Sector Engine:** Missing
-- **Breadth Engine:** Missing
-- **Movers Engine:** Missing
-- **Volatility Engine / India VIX:** Missing
+## Core Foundation (Phase 1)
+- **Configuration System:** Partial
+- **Error Types:** Missing
+- **Application State:** Missing
+- **Structured Logging:** Missing
+- **Correlation IDs:** Missing
+- **Market Clock:** Missing
+- **Market Session State:** Missing
+- **Timestamp Model:** Missing
+- **Event Model:** Partial (`MarketEvent` exists)
 
-## Prediction & Logic
-- **Feature Engine:** Missing
-- **Regime Engine:** Missing
-- **Direction Signal Engine:** Missing
+## Market Data & Engines (Phases 2-11)
+- **Instrument Master:** Stubbed (Interfaces exist, missing lookup features & tests)
+- **Market Data Gateway / WebSockets:** Partial
+- **Synthetic Data Generator:** Partial (Random ticks only, no full depth/greeks)
+- **Price Engine:** Stubbed
+- **Option Engine:** Stubbed
+- **Futures Engine:** Stubbed
+- **Order Flow Engine:** Stubbed
+- **Sector Engine:** Stubbed
+- **Breadth Engine:** Stubbed
+- **Movers Engine:** Stubbed
+- **Volatility / India VIX Engine:** Stubbed
+- **Feature Engine:** Stubbed
+- **Regime Engine:** Stubbed
+- **Direction Signal Engine:** Stubbed
 
-## Strategies
-- **Strategy Router:** Stubbed
-- **Directional Option Buying:** Missing
-- **Range Bound:** Missing
-- **Gap Up/Down:** Missing
-- **Long Strangle:** Missing
-- **Unusual Premium Scalping:** Missing
-- **Post 15:15 Scalping:** Missing
+## Strategies & Logic (Phases 12-18)
+- **Strategy Router:** Implemented (Iterates over strategies)
+- **Directional Option Buying:** Stubbed
+- **Range-Bound Market:** Stubbed
+- **Gap Up/Down:** Stubbed
+- **Long Strangle:** Stubbed
+- **Unusual Premium Scalping:** Stubbed
+- **Post 15:15 Scalping:** Stubbed
 
-## Risk & Execution
-- **Risk Engine:** Stubbed
-- **Portfolio State:** Missing
-- **Paper Execution:** Missing
-- **Reconciliation:** Missing
-- **Audit:** Missing
-- **Constraint Engine:** Missing
+## Risk, Execution, Portfolio (Phases 19-22)
+- **Risk Engine:** Partial (Basic quantity check)
+- **Portfolio Engine:** Stubbed (Structs exist)
+- **Paper Execution:** Stubbed
+- **Idempotency / Constraint / Reconciliation:** Missing
 
-## Broker Layer
-- **Broker Abstraction:** Stubbed
-- **Dhan Adapter:** Missing
-- **Upstox Adapter:** Missing
+## Broker Layer (Phases 23-24)
+- **Broker Abstraction:** Stubbed (Interfaces for Dhan/Upstox)
+- **Authentication / Frontend Auth UI:** Missing
 
-## UI / Frontend
-- **Terminal Layout:** Implemented
-- **KLineChart Integration:** Implemented
-- **Watchlist:** Partially implemented
-- **Option Chain UI:** Missing
-- **Futures UI:** Missing
-- **Order Flow UI:** Missing
-- **Sectors UI:** Missing
-- **Breadth UI:** Missing
-- **Movers UI:** Missing
-- **Signals UI:** Stubbed
-- **Strategies UI:** Missing
-- **Risk UI:** Stubbed
-- **Orders/Positions UI:** Missing
-- **Data Health UI:** Missing
-- **Broker Auth UI:** Missing
-
-## Research & DevOps
+## APIs & Data Storage (Phases 25-29)
+- **Backend API Routes:** Missing (Only `/health` and `/ws` exist)
+- **Redis/ClickHouse/Parquet Storage:** Missing
 - **Replay Engine:** Missing
-- **Backtesting:** Missing
-- **Model Calibration:** Missing
-- **Model Drift:** Missing
-- **Observability:** Missing
-- **Security Controls:** Missing
-- **Configuration (.env):** Implemented
-- **Tests:** Partially implemented
+- **Backtesting Engine:** Missing
+
+## Frontend UI (Phases 30-34)
+- **Terminal Layout / Watchlist:** Implemented
+- **KLineChart Integration:** Implemented
+- **Option Chain UI:** Partial (Dummy data)
+- **Signals UI:** Partial (Dummy data)
+- **Data Health UI:** Missing
+
+## Security & Observability (Phases 35-36)
+- **Audit Logging:** Missing
+- **Metrics / Observability:** Missing
+- **Rate Limiting:** Missing

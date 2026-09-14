@@ -49,7 +49,7 @@ export const Terminal: React.FC = () => {
     <AppShell>
       <div className="flex-1 flex bg-[#0b0e11] text-[#eaecef] w-full">
         <aside className="w-64 border-r border-[#2b3139] p-4 bg-[#181a20]">
-          <h2 className="text-xs uppercase tracking-widest text-[#848e9c] font-medium mb-4">Market Watch</h2>
+          <h2 className="text-xs uppercase tracking-widest text-[#848e9c] font-medium mb-4">Market Watch (SIMULATED)</h2>
           <div className="space-y-2">
             <div className="flex justify-between">
               <span>NIFTY 50</span>
@@ -76,7 +76,7 @@ export const Terminal: React.FC = () => {
         </section>
         <aside className="w-80 border-l border-[#2b3139] p-4 bg-[#181a20]">
            <h2 className="text-xs uppercase tracking-widest text-[#848e9c] font-medium mb-4">Risk & Execution</h2>
-           <div className="text-sm text-muted">PAPER MODE</div>
+           <div className="text-sm text-muted">PAPER MODE (SIMULATED DATA)</div>
         </aside>
       </div>
     </AppShell>
