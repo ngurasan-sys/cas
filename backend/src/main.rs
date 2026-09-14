@@ -8,11 +8,19 @@ async fn main() {
 
     let event_bus = Arc::new(backend::event_bus::EventBus::new());
 
-    let generator = backend::market_data::SyntheticDataGenerator::new(event_bus.clone());
+    let subscription_manager = Arc::new(std::sync::RwLock::new(
+        backend::market_data::SubscriptionManager::new(),
+    ));
+    let gateway = Arc::new(std::sync::Mutex::new(
+        backend::market_data::MarketDataGateway::new(event_bus.clone()),
+    ));
+
+    let mut generator = backend::market_data::SyntheticProvider::new(gateway.clone());
     generator.start();
 
     let state = Arc::new(AppState {
-        event_bus: event_bus,
+        event_bus,
+        subscription_manager,
     });
 
     let app = backend::api::create_router(state);

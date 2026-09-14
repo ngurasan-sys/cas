@@ -6,7 +6,7 @@
 - [x] Create configuration (`.env.example`).
 - [x] Create documentation (`README.md`, `architecture.md`).
 - [x] Implement synthetic data (generator pushing to event bus).
-- [ ] Implement Instrument Master functionality.
+- [x] Implement Instrument Master functionality.
 - [ ] Implement Option engine.
 - [ ] Implement Futures engine.
 - [ ] Implement Order flow engine.
@@ -17,25 +17,25 @@
 - [ ] Implement Regime engine.
 - [ ] Implement Direction engine.
 - [ ] Implement Six strategies evaluate.
-- [ ] Implement Strategy router.
+- [x] Implement Strategy router.
 - [ ] Implement Risk engine blocks strategy intents.
 - [ ] Implement Portfolio state.
 - [ ] Implement Paper execution.
 - [ ] Implement Reconciliation.
 - [ ] Implement Audit records.
-- [ ] Implement Broker abstractions.
+- [x] Implement Broker abstractions.
 - [ ] Implement Dhan adapter structure.
 - [ ] Implement Upstox adapter structure.
 - [ ] Implement Broker authentication UI.
-- [ ] Implement WebSocket abstraction.
-- [ ] Implement Subscription manager.
+- [x] Implement WebSocket abstraction.
+- [x] Implement Subscription manager.
 - [x] Implement Frontend terminal.
 - [x] Implement KLineChart.
-- [ ] Implement Option chain UI.
-- [ ] Implement Sector UI.
-- [ ] Implement Movers UI.
-- [ ] Implement Signal UI.
-- [ ] Implement Risk UI.
+- [x] Implement Option chain UI.
+- [x] Implement Sector UI.
+- [x] Implement Movers UI.
+- [x] Implement Signal UI.
+- [x] Implement Risk UI.
 - [ ] Implement Position UI.
 - [ ] Implement Orders UI.
 - [ ] Implement Data health.

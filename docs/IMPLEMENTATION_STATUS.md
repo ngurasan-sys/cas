@@ -20,8 +20,9 @@
 
 ## Market Data & Engines (Phases 2-11)
 - **Instrument Master:** Implemented (`InMemoryInstrumentMaster` supports `get_by_strike` and exact option composite queries. Negative tests added.)
-- **Market Data Gateway / WebSockets:** Partial
-- **Synthetic Data Generator:** Partial (Random ticks only, no full depth/greeks)
+- **Subscription Manager:** Implemented (Deduplication, P0-P3 priority tiers)
+- **Market Data Gateway / WebSockets:** Implemented (Added stale data, sequence duplication, and malformed data handling)
+- **Synthetic Data Generator:** Implemented (Generates explicit `MarketEvent` format with Spot/Fut/Option coverage)
 - **Price Engine:** Stubbed
 - **Option Engine:** Stubbed
 - **Futures Engine:** Stubbed

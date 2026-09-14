@@ -28,7 +28,7 @@ export const Terminal: React.FC = () => {
       // To fix typescript errors without deeper typings changes, we cast to any.
       if (chartInstance.current) {
           (chartInstance.current as any).updateData({
-              timestamp: data.timestamp,
+              timestamp: data.timestamp.event_ts,
               open: data.price,
               high: data.price + 5,
               low: data.price - 5,
