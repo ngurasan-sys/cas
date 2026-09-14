@@ -5,21 +5,21 @@
 - **React Frontend:** Builds cleanly. Basic terminal UI with KLineChart streaming simulated NIFTY/BANKNIFTY data over WebSockets is functional.
 - **Storage/DB:** Missing
 - **Configuration:** Present (`.env.example`)
-- **Tests:** Partial (1 dummy risk test passes)
+- **Tests:** Functional core logic tests available.
 
 ## Core Foundation (Phase 1)
 - **Configuration System:** Partial
 - **Error Types:** Missing
-- **Application State:** Missing
-- **Structured Logging:** Missing
-- **Correlation IDs:** Missing
-- **Market Clock:** Missing
-- **Market Session State:** Missing
-- **Timestamp Model:** Missing
+- **Application State:** Implemented (`AppState` holds `EventBus`)
+- **Structured Logging:** Implemented (JSON output via `tracing-subscriber`)
+- **Correlation IDs:** Implemented
+- **Market Clock:** Implemented (`Asia/Kolkata` with rigorous boundary tests for all session states including Holiday overrides)
+- **Market Session State:** Implemented
+- **Timestamp Model:** Implemented (Explicitly documented as millis since Unix Epoch UTC)
 - **Event Model:** Partial (`MarketEvent` exists)
 
 ## Market Data & Engines (Phases 2-11)
-- **Instrument Master:** Stubbed (Interfaces exist, missing lookup features & tests)
+- **Instrument Master:** Implemented (`InMemoryInstrumentMaster` supports `get_by_strike` and exact option composite queries. Negative tests added.)
 - **Market Data Gateway / WebSockets:** Partial
 - **Synthetic Data Generator:** Partial (Random ticks only, no full depth/greeks)
 - **Price Engine:** Stubbed

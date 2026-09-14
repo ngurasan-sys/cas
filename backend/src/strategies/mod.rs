@@ -12,7 +12,9 @@ pub struct StrategyRouter {
 
 impl StrategyRouter {
     pub fn new() -> Self {
-        Self { strategies: Vec::new() }
+        Self {
+            strategies: Vec::new(),
+        }
     }
 
     pub fn add_strategy(&mut self, strategy: Box<dyn Strategy>) {

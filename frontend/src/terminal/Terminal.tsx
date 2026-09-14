@@ -9,8 +9,9 @@ export const Terminal: React.FC = () => {
   const [bankniftyPrice, setBankNiftyPrice] = useState<number>(51200.00);
 
   useEffect(() => {
-    if (chartRef.current) {
-      chartInstance.current = init(chartRef.current);
+    const currentChartRef = chartRef.current;
+    if (currentChartRef) {
+      chartInstance.current = init(currentChartRef);
     }
 
     const ws = new WebSocket("ws://localhost:3000/ws");
@@ -39,8 +40,8 @@ export const Terminal: React.FC = () => {
 
     return () => {
       ws.close();
-      if (chartRef.current) {
-          dispose(chartRef.current);
+      if (currentChartRef) {
+          dispose(currentChartRef);
       }
     };
   }, []);

@@ -1,7 +1,7 @@
-use std::sync::Arc;
-use tokio::time::{sleep, Duration};
 use crate::event_bus::{EventBus, MarketEvent};
+use std::sync::Arc;
 use std::time::{SystemTime, UNIX_EPOCH};
+use tokio::time::{Duration, sleep};
 
 pub trait MarketDataGateway {
     fn subscribe(&self, instrument_id: &str);
@@ -28,7 +28,10 @@ impl SyntheticDataGenerator {
                 price_nifty += (rand::random::<f64>() - 0.5) * 5.0;
                 price_banknifty += (rand::random::<f64>() - 0.5) * 10.0;
 
-                let timestamp = SystemTime::now().duration_since(UNIX_EPOCH).unwrap().as_millis() as i64;
+                let timestamp = SystemTime::now()
+                    .duration_since(UNIX_EPOCH)
+                    .unwrap()
+                    .as_millis() as i64;
 
                 bus.publish(MarketEvent {
                     instrument_id: "NIFTY".to_string(),

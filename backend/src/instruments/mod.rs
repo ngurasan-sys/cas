@@ -34,8 +34,21 @@ pub trait InstrumentMaster {
     fn update_instrument(&mut self, instrument: Instrument);
     fn get_by_symbol(&self, symbol: &str) -> Option<Instrument>;
     fn get_by_underlying(&self, underlying: &str) -> Vec<Instrument>;
-    fn get_options(&self, underlying: &str, expiry: i64, option_type: InstrumentType) -> Vec<Instrument>;
+    fn get_options(
+        &self,
+        underlying: &str,
+        expiry: i64,
+        option_type: InstrumentType,
+    ) -> Vec<Instrument>;
     fn get_futures(&self, underlying: &str) -> Vec<Instrument>;
+    fn get_by_strike(&self, underlying: &str, strike: f64) -> Vec<Instrument>;
+    fn get_exact_option(
+        &self,
+        underlying: &str,
+        expiry: i64,
+        option_type: InstrumentType,
+        strike: f64,
+    ) -> Option<Instrument>;
 }
 
 pub struct InMemoryInstrumentMaster {
@@ -67,9 +80,7 @@ impl InstrumentMaster for InMemoryInstrumentMaster {
 
     fn get_by_symbol(&self, symbol: &str) -> Option<Instrument> {
         let lock = self.instruments.read().unwrap();
-        lock.values()
-            .find(|inst| inst.symbol == symbol)
-            .cloned()
+        lock.values().find(|inst| inst.symbol == symbol).cloned()
     }
 
     fn get_by_underlying(&self, underlying: &str) -> Vec<Instrument> {
@@ -80,13 +91,18 @@ impl InstrumentMaster for InMemoryInstrumentMaster {
             .collect()
     }
 
-    fn get_options(&self, underlying: &str, expiry: i64, option_type: InstrumentType) -> Vec<Instrument> {
+    fn get_options(
+        &self,
+        underlying: &str,
+        expiry: i64,
+        option_type: InstrumentType,
+    ) -> Vec<Instrument> {
         let lock = self.instruments.read().unwrap();
         lock.values()
             .filter(|inst| {
                 inst.underlying == underlying
-                && inst.instrument_type == option_type
-                && inst.expiry == Some(expiry)
+                    && inst.instrument_type == option_type
+                    && inst.expiry == Some(expiry)
             })
             .cloned()
             .collect()
@@ -94,12 +110,41 @@ impl InstrumentMaster for InMemoryInstrumentMaster {
 
     fn get_futures(&self, underlying: &str) -> Vec<Instrument> {
         let lock = self.instruments.read().unwrap();
-        let mut futures: Vec<Instrument> = lock.values()
-            .filter(|inst| inst.underlying == underlying && inst.instrument_type == InstrumentType::Future)
+        let mut futures: Vec<Instrument> = lock
+            .values()
+            .filter(|inst| {
+                inst.underlying == underlying && inst.instrument_type == InstrumentType::Future
+            })
             .cloned()
             .collect();
         // Sort futures by expiry
         futures.sort_by_key(|a| a.expiry.unwrap_or(i64::MAX));
         futures
+    }
+
+    fn get_by_strike(&self, underlying: &str, strike: f64) -> Vec<Instrument> {
+        let lock = self.instruments.read().unwrap();
+        lock.values()
+            .filter(|inst| inst.underlying == underlying && inst.strike == Some(strike))
+            .cloned()
+            .collect()
+    }
+
+    fn get_exact_option(
+        &self,
+        underlying: &str,
+        expiry: i64,
+        option_type: InstrumentType,
+        strike: f64,
+    ) -> Option<Instrument> {
+        let lock = self.instruments.read().unwrap();
+        lock.values()
+            .find(|inst| {
+                inst.underlying == underlying
+                    && inst.instrument_type == option_type
+                    && inst.expiry == Some(expiry)
+                    && inst.strike == Some(strike)
+            })
+            .cloned()
     }
 }

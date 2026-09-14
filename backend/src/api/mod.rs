@@ -1,14 +1,14 @@
+use crate::foundation::state::AppState;
 use axum::{
+    Router,
     extract::{
-        ws::{Message, WebSocket, WebSocketUpgrade},
         State,
+        ws::{Message, WebSocket, WebSocketUpgrade},
     },
     response::IntoResponse,
     routing::get,
-    Router,
 };
 use std::sync::Arc;
-use crate::foundation::state::AppState;
 use tower_http::cors::{Any, CorsLayer};
 
 async fn health_check() -> &'static str {
