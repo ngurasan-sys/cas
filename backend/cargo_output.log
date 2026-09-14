@@ -7,6 +7,9 @@ warning: unused import: `crate::event_bus::MarketEvent`
   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
 
 warning: `backend` (lib) generated 1 warning (run `cargo fix --lib -p backend` to apply 1 suggestion)
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.07s
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.39s
      Running `target/debug/backend`
-Server running on http://0.0.0.0:3000
+
+thread 'main' (143811) panicked at src/main.rs:5:72:
+called `Result::unwrap()` on an `Err` value: Os { code: 98, kind: AddrInUse, message: "Address already in use" }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
